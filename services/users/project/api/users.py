@@ -1,5 +1,3 @@
-from crypt import methods
-from email.mime import message
 from flask import Blueprint, jsonify, request
 from project import db
 from project.api.models import User
@@ -92,7 +90,7 @@ def get_all_users():
   response_object = {
     'status': 'success',
     'data': {
-      'users': [user.to_json for user in User.query.all()]
+      'users': [user.to_json() for user in User.query.all()]
     }
   }
   return (jsonify(response_object), 200)
